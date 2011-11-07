@@ -1,6 +1,7 @@
 class Micropost < ActiveRecord::Base
 	belongs_to :users
 	default_scope :order => 'microposts.created_at DESC'
+	has_one :category
 	
 	attr_accessible :title,:content,:category
 	

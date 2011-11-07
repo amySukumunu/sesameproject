@@ -1,7 +1,13 @@
 ProjectSesame::Application.routes.draw do
+  get "categories/create"
+
   resources :users do 
-	resources :microposts
+	resources :microposts 
+	resources :categories
   end
+  resources :categories do 
+  	resources :microposts
+  end	
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts
   
@@ -14,6 +20,6 @@ ProjectSesame::Application.routes.draw do
   match '/signout',   	:to => 'sessions#destroy'
   match '/newpost',   	:to => 'microposts#new'
  
-  match "/users/:id"  => "users#show"
+
   
 end

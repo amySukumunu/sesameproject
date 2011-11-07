@@ -1,12 +1,17 @@
-<table>
-  <tr>
-    <td class="main">
-      	<h1>
-        	<%= @user.name %>
-      	</h1>
-      		<%= @user.email %>
-    	
-    </td>
-   </tr>
-   <tr><%= link_to "Post New Article", newpost_path%></tr>
-</table>
+<ul>
+	<li> 
+      <h1><%= @user.name %></h1>
+      	  <%= @user.email %>
+     </li>
+     <li>
+     	<%= form_for @category do |f|%>
+     		<%= hidden_field_tag :user_id, @user.id  %>
+     		<%= f.label :category ,"Category:"%>
+  			<%=h f.text_field :category %><br />
+  			<%= f.submit "Add Category" %>	
+     	<% end %>
+     </li>
+<li><%= link_to "Post New Article", newpost_path%></tr></li>
+</ul>
+   
+   

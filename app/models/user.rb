@@ -1,7 +1,10 @@
 require 'digest'
 class User < ActiveRecord::Base
 	
-	has_many :microposts
+	has_many :microposts, :dependent => :destroy
+	has_many :category, :dependent => :destroy
+	accepts_nested_attributes_for :category, :reject_if =>lambda {|a| a[:category].blank?}
+	
 	attr_accessor 	:password
   	attr_accessible :name, :email,:password,:password_confirmation
 	

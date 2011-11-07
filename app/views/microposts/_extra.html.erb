@@ -1,0 +1,4 @@
+<%=  
+  		@category = Micropost.select("category").group("category")
+  		select_tag(:category,  
+   		options_from_collection_for_select(@category, :category, :category))  	%>

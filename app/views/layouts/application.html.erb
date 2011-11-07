@@ -19,6 +19,9 @@
 
 		<div id="main" class="container_24">
      		<div id="primary" class="grid_15">
+				<% flash.each do |key, value| %>
+          			<div class="flash <%= key %>"><%= value %></div>
+        		<% end %>
 				<%= yield %>
 			</div>
 			<aside id="secondary" class="grid_8 prefix_1">

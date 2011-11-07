@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 	def new
   		@title = "Sign Up"
   		@user= User.new
+  		
   	end
   	
   	def create 
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   			sign_in(@user)
   			redirect_to @user
   		else
+  			flash[:error] = "Please sign up again."
   			@user.password = nil 
 			@user.password_confirmation = nil 
 			@title ="Sign Up"
@@ -27,6 +29,7 @@ class UsersController < ApplicationController
   	def show
 		@user = User.find(params[:id])
 		@title = @user.name
+		@category = @user.category.new
 	end
 	
 	

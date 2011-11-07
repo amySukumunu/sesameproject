@@ -1,7 +1,7 @@
 <h2>Category</h2>
 <ul>
-	<% @micropost = Micropost.select("category").group("category") %>
+	<% @micropost = Category.select("category").group("category") %>
 	<% @micropost.each do |category| %>
-		<li><%= category.category %></li>
+		<li><%= link_to "#{category.category}", '#' %></li>
 	<% end %>
 </ul>

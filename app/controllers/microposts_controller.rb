@@ -1,8 +1,6 @@
 class MicropostsController < ApplicationController
 	before_filter :authenticate, :only => [:edit, :create, :destroy]
 	
-	
-	
 	def index
 		@title = "Blog"
 		@posts = Micropost.paginate(:page => params[:page], :per_page => 3)
@@ -26,8 +24,7 @@ class MicropostsController < ApplicationController
   			redirect_to @micropost
    		else
   			flash[:error] = "Please sign up again."
-  			@micropost= []
-  			render 'pages/home'
+  			render 'new'
   		end
 	end
 	
@@ -44,7 +41,7 @@ class MicropostsController < ApplicationController
   	def update 
   		@micropost = Micropost.find(params[:id])
   		if @micropost.update_attributes(params[:micropost])
-  			flash[:success] = "Profile updated."
+  			flash[:success] = "Post updated."
   			redirect_to @micropost
   		else
   			@title = 'Edit post'
