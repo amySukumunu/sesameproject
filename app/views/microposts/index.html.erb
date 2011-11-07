@@ -1,0 +1,15 @@
+<h2>Blog</h2>
+
+
+<% @posts.each do |post|%>
+	<article>
+  		<h3><%= link_to post.title, post %></h3>
+  		<h6><%= post.created_at %>|<a href="#">10 Comments</a>
+  		| Category: <a href="#"><%= post.category %></a></h6>
+  		<%= raw(truncate(post.content, :length => 250, :omission => (link_to "...", post))) %>
+		<br/>
+		<%= render 'settings',:object => post %>
+	</article>
+<% end %>
+
+<%= will_paginate @posts %>
