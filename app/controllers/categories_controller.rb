@@ -3,12 +3,17 @@ class CategoriesController < ApplicationController
   		@category = current_user.categories.new(params[:category])
   		if @category.save 
   			flash[:success] = "Category created!"
-  			redirect_to @user
+  			redirect_to :back
    		else
   			flash[:error] = "Category not created."
-  			render @user
+  			render :back
   		end
 
+  end
+  
+  def destroy
+  	
+  
   end
 
 end

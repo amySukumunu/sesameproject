@@ -5,9 +5,8 @@ ProjectSesame::Application.routes.draw do
 	resources :microposts 
 	resources :categories
   end
-  resources :categories do 
-  	resources :microposts
-  end	
+  resources :categories 
+
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts
   

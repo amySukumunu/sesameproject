@@ -29,7 +29,9 @@ class UsersController < ApplicationController
   	def show
 		@user = User.find(params[:id])
 		@title = @user.name
-		@category = @user.category.new
+		@category = @user.categories.new
+		@cat = @user.categories.select("category").group("category").where("user_id = ?", @user)
+		@categoryList = @cat.paginate(:page => params[:page], :per_page => 3)
 	end
 	
 	

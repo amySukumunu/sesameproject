@@ -6,8 +6,9 @@
   	<%= f.label :content %><br />
   	<%=h f.text_area :content, :row => 30, :cols=> 30 %><br />
   	
-  	<%= f.label :category %><br />
-	<%=h f.text_field :category %><br />
+  	<%=f.select :category, Category.select("category").group("category").map{|u| [u.category]}
+  	 %>
+  		  	
  		
 	<%= f.submit "Post" %>
 

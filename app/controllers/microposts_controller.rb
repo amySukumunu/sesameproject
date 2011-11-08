@@ -23,7 +23,6 @@ class MicropostsController < ApplicationController
   			flash[:success] = "Post created!"
   			redirect_to @micropost
    		else
-  			flash[:error] = "Please sign up again."
   			render 'new'
   		end
 	end
